@@ -608,6 +608,10 @@ static void page_open(ITEM *i) {
 }
 
 static void show_page(ITEM *i) {
+    if (!i) {
+        fprintf(stderr, "%s: item was NULL!\n", __func__);
+        return;
+    }
     // TODO!!
     // panel_item[selected_item->type - 1].disabled = 1;
     // panel_item[i->type - 1].disabled = 0;
@@ -1058,9 +1062,6 @@ bool flist_mmove(void *UNUSED(n), int UNUSED(x), int UNUSED(y), int UNUSED(width
     }
 
     ITEM *i = item_hit(mx, my, height);
-    if (!i) {
-        return false;
-    }
 
     bool draw = false;
 
